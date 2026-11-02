@@ -6,11 +6,15 @@ const uri =
   process.env.BETTER_AUTH_MONGODB_URI ||
   process.env.MONGODB_URI;
 
-if (!uri) {
+// Route modules are evaluated during `next build` to collect page data, so only
+// fail hard at runtime. MongoClient doesn't connect until the first query.
+const isBuildPhase = process.env.NEXT_PHASE === "phase-production-build";
+
+if (!uri && !isBuildPhase) {
   throw new Error("BETTER_AUTH_MONGODB_URI or MONGODB_URI is not defined in .env");
 }
 
-const client = new MongoClient(uri);
+const client = new MongoClient(uri || "mongodb://127.0.0.1:27017");
 
 export const database = client.db("bazardor");
 
@@ -39,6 +43,7 @@ if (
 const baseURL =
   process.env.BETTER_AUTH_URL ||
   process.env.NEXT_PUBLIC_BETTER_AUTH_URL ||
+  process.env.URL ||
   (process.env.NODE_ENV === "production"
     ? "https://bazardor-rho.vercel.app"
     : "http://localhost:3000");
@@ -55,7 +60,9 @@ export const auth = betterAuth({
     "http://127.0.0.1:3000",
     "https://bazardor-rho.vercel.app",
     "https://bazardor-project-assijment-7-2rwk.vercel.app",
-  ],
+    process.env.URL,
+    process.env.DEPLOY_PRIME_URL,
+  ].filter(Boolean),
 
   emailAndPassword: {
     enabled: true,
