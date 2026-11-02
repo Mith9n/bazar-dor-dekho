@@ -3,11 +3,11 @@ import { NextResponse } from "next/server";
 import { unstable_rethrow } from "next/navigation";
 import { headers } from "next/headers";
 import { ObjectId } from "mongodb";
-import { auth, database } from "@/lib/auth";
+import { getAuth, getDatabase } from "@/lib/auth";
 
 export async function GET() {
     try {
-        const session = await auth.api.getSession({
+        const session = await getAuth().api.getSession({
             headers: await headers(),
         });
 
@@ -25,7 +25,7 @@ export async function GET() {
             userIds.push(new ObjectId(userId));
         }
 
-        const account = await database
+        const account = await getDatabase()
             .collection("account")
             .findOne({
                 providerId: "github",
