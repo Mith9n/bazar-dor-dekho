@@ -1,7 +1,7 @@
 
 
 const nextConfig = {
-  
+
   experimental: {
     agentFeedback: true,
     agentUpgrade: "security",
