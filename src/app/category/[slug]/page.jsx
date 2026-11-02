@@ -14,12 +14,10 @@ import {
 
 const API_BASE = "/api/products";
 
-// API-তে "dim-dui", কিন্তু পুরনো লিংকে "dim" আসতে পারে
 const SLUG_ALIASES = {
     dim: "dim-dui",
 };
 
-// ক্যাটাগরি API ডাউন থাকলে যেন পাতা ভাঙে না — তখন এটা ব্যবহার হবে
 const FALLBACK_CATEGORIES = {
     chal: { nameBn: "চাল", icon: "🍚" },
     dal: { nameBn: "ডাল", icon: "🌾" },
@@ -44,7 +42,6 @@ function CategoryContent() {
     const [sort, setSort] = useState("default");
     const [error, setError] = useState(false);
 
-    // ক্যাটাগরির নাম ও আইকন আনো (API থেকে, না হলে ফলব্যাক)
     useEffect(() => {
         let active = true;
 
@@ -65,7 +62,6 @@ function CategoryContent() {
                 }
             } catch (err) {
                 console.error("Category info error:", err);
-                // categories ফাঁকা থাকলে ফলব্যাক দিয়ে চলবে
             }
         }
 
@@ -76,7 +72,6 @@ function CategoryContent() {
         };
     }, []);
 
-    // পণ্য আনো
     useEffect(() => {
         if (!resolvedSlug) return;
 
@@ -126,7 +121,6 @@ function CategoryContent() {
         };
     }, [resolvedSlug]);
 
-    // API-তে থাকলে সেটা, না হলে ফলব্যাক
     const apiCategory = Array.isArray(categories)
         ? categories.find((item) => item.slug === resolvedSlug)
         : null;

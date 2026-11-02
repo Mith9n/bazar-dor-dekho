@@ -104,7 +104,6 @@ function ProductDetails() {
                     ← সব পণ্যে ফিরে যাও
                 </Link>
 
-                {/* Product header */}
                 <section className="overflow-hidden rounded-3xl border border-gray-100 bg-white shadow-sm">
                     <div className="bg-gradient-to-r from-green-700 via-green-600 to-emerald-500 px-6 py-8 text-white sm:px-10 sm:py-10">
                         <div className="flex flex-col gap-5 sm:flex-row sm:items-center">
@@ -164,7 +163,6 @@ function ProductDetails() {
                     </div>
                 </section>
 
-                {/* Price summary */}
                 <section className="mt-6">
                     <h2 className="mb-4 text-xl font-bold text-gray-800">
                         📊 দামের সংক্ষিপ্ত বিবরণ
@@ -194,7 +192,6 @@ function ProductDetails() {
                     </div>
                 </section>
 
-                {/* Historical prices */}
                 <section className="mt-8">
                     <h2 className="mb-4 text-xl font-bold text-gray-800">
                         🗓️ আগের দামের তথ্য
@@ -220,7 +217,6 @@ function ProductDetails() {
                     </div>
                 </section>
 
-                {/* Market prices */}
                 <section className="mt-8">
                     <h2 className="mb-4 text-xl font-bold text-gray-800">
                         🏪 বাজারভিত্তিক দাম

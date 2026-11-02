@@ -12,7 +12,6 @@ import {
 
 const TICKER_LIMIT = 12;
 
-// হোমপেজের বাকি অংশের মতো একই API থেকে আসা সত্যিকারের দাম
 function buildTickerItems(products) {
     return products.slice(0, TICKER_LIMIT).map((product) => {
         const price = getProductPrice(product);
@@ -38,8 +37,6 @@ export default function PriceTicker() {
 
     const items = buildTickerItems(products);
 
-    // দাম আসার আগে টিকার সম্পূর্ণ অদৃশ্য হলে নিচের কন্টেন্ট একবার সরে যাবে —
-    // তাই লোডিং-এও একই উচ্চতার স্কেলেটন দেখাও, যেন কোনো সরাসরি না হয়।
     if (error) {
         return null;
     }

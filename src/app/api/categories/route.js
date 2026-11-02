@@ -5,10 +5,7 @@ import { cacheLife } from "next/cache";
 
 const API_URL = "https://api.abcz.workers.dev/api/bazardor/categories";
 
-/**
- * Cache Components চালু থাকায় `next: { revalidate }` বদলে `use cache` ব্যবহার করতে হয়।
- * `use cache` রাউট হ্যান্ডলারের ভেতরে সরাসরি বসানো যায় না — তাই আলাদা ফাংশনে রাখা।
- */
+
 async function fetchUpstreamCategories() {
     "use cache";
     cacheLife("minutes");
@@ -34,7 +31,6 @@ export async function GET() {
 
         return NextResponse.json(data);
     } catch (error) {
-        // Next.js-এর নিজস্ব প্রিরেন্ডার সিগন্যাল ধরে রাখা যাবে না
         unstable_rethrow(error);
 
         console.error("Categories API error:", error);

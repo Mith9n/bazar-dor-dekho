@@ -84,13 +84,10 @@ export default function SignupPage() {
 
             const callbackURL = getCallbackURL("/");
 
-            // better-auth সাইন আপের সাথে সাথেই সেশন তৈরি করে —
-            // তাই ব্যবহারকারীকে সরাসরি সে যে পাতা দেখছিল সেখানে পাঠাও।
             if (data?.token) {
                 router.push(callbackURL);
                 router.refresh();
             } else {
-                // ইমেইল ভেরিফিকেশন বাধ্য থাকলে আগে লগইন করতে হবে
                 router.push(
                     callbackURL === "/"
                         ? "/signin"

@@ -7,15 +7,12 @@ export default function Hero() {
 
                 <div className="grid min-h-[350px] overflow-hidden rounded-2xl bg-gradient-to-r from-green-50 to-green-100 lg:grid-cols-2">
 
-                    {/* LEFT */}
                     <div className="flex flex-col justify-center px-6 py-10 sm:px-10 lg:px-12">
 
-                        {/* Eyebrow */}
                         <p className="mb-4 w-fit rounded-full bg-green-100 px-3 py-1 text-sm font-semibold text-green-700">
                             আজকের বাজার দর
                         </p>
 
-                        {/* Heading */}
                         <h1 className="text-3xl font-extrabold leading-tight text-gray-900 sm:text-4xl lg:text-5xl">
                             আপনার প্রতিদিনের
                             <span className="block text-green-600">
@@ -23,14 +20,12 @@ export default function Hero() {
                             </span>
                         </h1>
 
-                        {/* Subtitle */}
                         <p className="mt-4 max-w-lg text-sm leading-7 text-gray-600 sm:text-base">
                             দেশের বিভিন্ন বাজারের সবজি, ফল, মাছ, মাংস,
                             ডাল, তেলসহ নিত্যপ্রয়োজনীয় পণ্যের সর্বশেষ
                             দাম জানুন এক জায়গায়।
                         </p>
 
-                        {/* CTA */}
                         <div className="mt-6">
                             <a
                                 href="#সব-পণ্য"
@@ -43,7 +38,6 @@ export default function Hero() {
 
                     </div>
 
-                    {/* RIGHT IMAGE */}
                     <div className="flex min-h-[280px] items-end justify-center lg:min-h-[350px]">
 
                         <Image

@@ -12,7 +12,6 @@ import {
     getUnit,
 } from "./productMeta";
 
-// সর্বোচ্চ ৩২টি পণ্য দেখাও (গ্রিড পরিচ্ছন্ন রাখতে)
 const DISPLAY_LIMIT = 32;
 
 export default function AllProducts() {
@@ -27,7 +26,6 @@ export default function AllProducts() {
             className="scroll-mt-24 bg-[#F0F5F0] py-12"
         >
             <div className="page-container mx-auto max-w-7xl">
-                {/* Heading */}
                 <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
                     <div>
                         
@@ -47,7 +45,6 @@ export default function AllProducts() {
                     )}
                 </div>
 
-                {/* Loading */}
                 {loading && (
                     <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
                         {Array.from({ length: 8 }).map((_, index) => (
@@ -63,7 +60,6 @@ export default function AllProducts() {
                     </div>
                 )}
 
-                {/* Error */}
                 {!loading && error && (
                     <div className="rounded-xl border border-red-200 bg-red-50 p-6 text-center text-red-700">
                         <p>{error}</p>
@@ -78,7 +74,6 @@ export default function AllProducts() {
                     </div>
                 )}
 
-                {/* Product Cards */}
                 {!loading && !error && visibleProducts.length > 0 && (
                     <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
                         {visibleProducts.map((product, index) => {
@@ -94,7 +89,6 @@ export default function AllProducts() {
                                     href={slug ? `/product/${slug}` : "#সব-পণ্য"}
                                     className="group rounded-2xl border border-gray-200 bg-white p-4 transition duration-200 hover:-translate-y-1 hover:border-green-300 hover:shadow-lg"
                                 >
-                                    {/* Product Emoji */}
                                     <div className="mb-4 flex h-20 w-20 items-center justify-center rounded-xl bg-green-50">
                                         <span
                                             className="text-5xl leading-none"
@@ -105,24 +99,20 @@ export default function AllProducts() {
                                         </span>
                                     </div>
 
-                                    {/* Product Name */}
                                     <h3 className="min-h-12 text-base font-semibold text-gray-900 group-hover:text-green-700">
                                         {productName}
                                     </h3>
 
-                                    {/* Today's Price */}
                                     <p className="mt-2 text-lg font-bold text-green-700">
                                         {price !== null
                                             ? `${toBanglaNumber(price)} টাকা`
                                             : "দাম পাওয়া যায়নি"}
                                     </p>
 
-                                    {/* Unit */}
                                     <p className="mt-1 text-xs text-gray-500">
                                         প্রতি {getUnit(product?.unit)}
                                     </p>
 
-                                    {/* Price Change */}
                                     {change && (
                                         <p
                                             className={`mt-2 text-xs font-medium ${change.dir === "up"
@@ -151,7 +141,6 @@ export default function AllProducts() {
                     </div>
                 )}
 
-                {/* Empty */}
                 {!loading && !error && total === 0 && (
                     <div className="rounded-xl border border-gray-200 bg-white p-8 text-center text-gray-600">
                         কোনো পণ্য পাওয়া যায়নি।

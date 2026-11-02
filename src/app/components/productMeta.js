@@ -1,4 +1,3 @@
-// পণ্যের নাম, ইমোজি, দাম ও একক — সব কম্পোনেন্ট এখান থেকেই ব্যবহার করবে
 import {
     toBanglaNumber,
     getProductSlug,
@@ -6,7 +5,6 @@ import {
 
 export { toBanglaNumber, getProductSlug };
 
-// ক্যাটাগরি অনুযায়ী ইমোজি
 export const CATEGORY_ICONS = {
     chal: "🍚",
     dal: "🌾",
@@ -18,7 +16,6 @@ export const CATEGORY_ICONS = {
     mosla: "🌶️",
 };
 
-// পণ্যের স্লাগ অনুযায়ী ইমোজি
 export const PRODUCT_ICONS = {
     peyaj: "🧅",
     begun: "🍆",
@@ -60,7 +57,6 @@ export const PRODUCT_ICONS = {
     "dhanepata-gunda": "🌿",
 };
 
-// নাম দিয়ে ইমোজি খোঁজা (স্লাগ না থাকলে)
 const NAME_ICONS = [
     ["আদা", "🫚"],
     ["পেঁয়াজ", "🧅"],
@@ -96,7 +92,6 @@ export function getProductIcon(product) {
         return PRODUCT_ICONS[slug];
     }
 
-    // API-তে ইমোজি থাকলে সেটি দেখাও (URL হলে নয়)
     const image = product?.image;
 
     if (

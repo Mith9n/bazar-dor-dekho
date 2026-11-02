@@ -13,7 +13,6 @@ import {
     formatPrice,
 } from "./productMeta";
 
-// দাম কমেছে এমন পণ্য: সবচেয়ে বেশি কমেছে আগে, সর্বোচ্চ ৬টি
 const FALLING_LIMIT = 6;
 
 export default function PriceFallers() {
@@ -40,7 +39,6 @@ export default function PriceFallers() {
         <section className="bg-[#F0F5F0] py-10">
             <div className="page-container mx-auto max-w-7xl">
 
-                {/* Section Heading */}
                 <div className="mb-6 flex items-center gap-3">
                     <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-red-50 text-2xl">
                         📉
@@ -57,7 +55,6 @@ export default function PriceFallers() {
                     </div>
                 </div>
 
-                {/* Loading Skeleton */}
                 {loading && (
                     <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
                         {Array.from({ length: 6 }).map(
@@ -79,7 +76,6 @@ export default function PriceFallers() {
                     </div>
                 )}
 
-                {/* Error State */}
                 {!loading && error && (
                     <div className="rounded-xl border border-red-100 bg-red-50 p-5 text-center text-red-600">
                         <p>{error}</p>
@@ -94,14 +90,12 @@ export default function PriceFallers() {
                     </div>
                 )}
 
-                {/* Empty State */}
                 {!loading && !error && fallingProducts.length === 0 && (
                     <div className="rounded-xl border border-gray-100 bg-white p-6 text-center text-gray-500">
                         কোনো পণ্যের দাম কমেনি।
                     </div>
                 )}
 
-                {/* Product Cards */}
                 {!loading && !error && fallingProducts.length > 0 && (
                     <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
                         {fallingProducts.map((product, index) => {
@@ -116,7 +110,6 @@ export default function PriceFallers() {
 
                             const cardContent = (
                                 <>
-                                    {/* Product Info */}
                                     <div className="flex items-center gap-4">
                                         <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-gray-50 text-3xl">
                                             <span
@@ -139,7 +132,6 @@ export default function PriceFallers() {
                                         </div>
                                     </div>
 
-                                    {/* Today's Price */}
                                     <div className="mt-5 flex items-end justify-between gap-3">
                                         <div className="min-w-0">
                                             <p className="text-sm text-gray-500">
@@ -151,7 +143,6 @@ export default function PriceFallers() {
                                             </p>
                                         </div>
 
-                                        {/* Price Decrease Badge */}
                                         <span className="shrink-0 rounded-full bg-red-50 px-3 py-1.5 text-sm font-semibold text-red-600">
                                             ▼{" "}
                                             {toBanglaNumber(

@@ -26,12 +26,10 @@ export default function ProfilePage() {
     const [name, setName] = useState("");
     const [isSaving, setIsSaving] = useState(false);
 
-    // GitHub profile information
     const [githubProfile, setGithubProfile] = useState(null);
 
     const user = session?.user;
 
-    // Load GitHub avatar
     useEffect(() => {
         const userId = session?.user?.id;
 
@@ -75,12 +73,10 @@ export default function ProfilePage() {
     const currentGitHubProfile =
         githubProfile?.userId === user?.id ? githubProfile : null;
 
-    // Prefer GitHub avatar, otherwise use the saved profile image
     const profileImage =
         currentGitHubProfile?.image || user?.image || null;
     const githubLogin = currentGitHubProfile?.login || "";
 
-    // Sign Out
     const handleSignOut = async () => {
         try {
             const { error } = await signOut();
@@ -102,7 +98,6 @@ export default function ProfilePage() {
         }
     };
 
-    // Update name
     const handleUpdateName = async (event) => {
         event.preventDefault();
 
@@ -157,7 +152,6 @@ export default function ProfilePage() {
         }
     };
 
-    // Loading
     if (isPending) {
         return (
             <main className="page-container flex min-h-[60vh] items-center justify-center bg-[#F0F5F0]">
@@ -168,7 +162,6 @@ export default function ProfilePage() {
         );
     }
 
-    // Not logged in
     if (!user) {
         return (
             <main className="page-container flex min-h-[60vh] flex-col items-center justify-center bg-[#F0F5F0] text-center">
@@ -206,7 +199,6 @@ export default function ProfilePage() {
             </div>
 
             <div className="space-y-6">
-                {/* Profile card */}
                 <section className="flex flex-col gap-5 rounded-2xl border border-gray-100 bg-white p-5 shadow-sm sm:flex-row sm:items-center sm:justify-between sm:p-6">
                     <div className="flex min-w-0 items-center gap-4">
                         <div className="relative flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-full bg-emerald-100 text-xl font-bold text-emerald-700">
@@ -256,7 +248,6 @@ export default function ProfilePage() {
                     </button>
                 </section>
 
-                {/* Account information */}
                 <section className="space-y-5 rounded-2xl border border-gray-100 bg-white p-5 shadow-sm sm:p-6">
                     <h3 className="text-lg font-semibold text-gray-900">
                         অ্যাকাউন্টের তথ্য

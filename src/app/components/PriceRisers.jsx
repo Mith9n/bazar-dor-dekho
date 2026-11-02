@@ -13,7 +13,6 @@ import {
     formatPrice,
 } from "./productMeta";
 
-// দাম বাড়া পণ্য: বেশি percentage আগে, সর্বোচ্চ ৬টি
 const RISING_LIMIT = 6;
 
 export default function PriceRisers() {
@@ -39,7 +38,6 @@ export default function PriceRisers() {
         >
             <div className="page-container mx-auto max-w-7xl">
 
-                {/* Section Heading */}
                 <div className="mb-6 flex items-center gap-3">
                     <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-green-50 text-2xl">
                         📈
@@ -56,7 +54,6 @@ export default function PriceRisers() {
                     </div>
                 </div>
 
-                {/* Loading */}
                 {loading && (
                     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                         {Array.from({ length: 6 }).map((_, index) => (
@@ -75,7 +72,6 @@ export default function PriceRisers() {
                     </div>
                 )}
 
-                {/* Error */}
                 {!loading && error && (
                     <div className="rounded-xl border border-red-100 bg-red-50 p-5 text-sm text-red-600">
                         {error}
@@ -90,7 +86,6 @@ export default function PriceRisers() {
                     </div>
                 )}
 
-                {/* Empty State */}
                 {!loading &&
                     !error &&
                     risingProducts.length === 0 && (
@@ -99,7 +94,6 @@ export default function PriceRisers() {
                         </div>
                     )}
 
-                {/* Rising Product Cards */}
                 {!loading &&
                     !error &&
                     risingProducts.length > 0 && (
@@ -115,7 +109,6 @@ export default function PriceRisers() {
 
                                 const cardContent = (
                                     <>
-                                        {/* Emoji */}
                                         <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-green-50 text-3xl">
                                             <span
                                                 role="img"
@@ -125,7 +118,6 @@ export default function PriceRisers() {
                                             </span>
                                         </div>
 
-                                        {/* Product Info */}
                                         <div className="min-w-0 flex-1">
                                             <h3 className="truncate font-semibold text-gray-800 group-hover:text-green-700">
                                                 {name}
@@ -144,7 +136,6 @@ export default function PriceRisers() {
                                             </p>
                                         </div>
 
-                                        {/* Price Change Badge */}
                                         <div className="shrink-0 self-center rounded-lg bg-green-50 px-2.5 py-2 text-right">
                                             <p className="text-sm font-bold text-green-700">
                                                 ▲ {toBanglaNumber(

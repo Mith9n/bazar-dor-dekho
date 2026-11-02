@@ -72,7 +72,6 @@ export async function GET() {
             }
         );
     } catch (error) {
-        // Next.js-এর নিজস্ব প্রিরেন্ডার সিগন্যাল ধরে রাখা যাবে না
         unstable_rethrow(error);
 
         console.error("GitHub avatar error:", error);

@@ -1,5 +1,4 @@
 
-// Convert English numbers to Bangla numbers
 export const toBanglaNumber = (value) => {
     if (value === null || value === undefined || value === "") {
         return "";
@@ -12,7 +11,6 @@ export const toBanglaNumber = (value) => {
     });
 };
 
-// Get product slug
 export const getProductSlug = (product) => {
     if (!product) {
         return "";

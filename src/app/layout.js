@@ -24,7 +24,6 @@ export default function RootLayout({ children }) {
         <PriceTicker />
 
         {children}
-        {/* FOOTER */}
         <Footer />
       </body>
     </html>

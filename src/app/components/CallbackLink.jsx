@@ -4,10 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { getCallbackURL } from "@/lib/auth-client";
 
-/**
- * সাইন ইন ↔ সাইন আপ লিংকে callbackURL টানে নিয়ে যায়,
- * যাতে লগইন ফ্লোর মাঝখানেও মূল গন্তব্য না হারায়।
- */
+
 export default function CallbackLink({
     href,
     children,

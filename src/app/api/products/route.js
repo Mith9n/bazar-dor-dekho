@@ -6,10 +6,7 @@ import { cacheLife } from "next/cache";
 const API_URL =
     "https://api.abcz.workers.dev/api/bazardor/products";
 
-/**
- * Cache Components চালু থাকায় `next: { revalidate }` বদলে `use cache` ব্যবহার করতে হয়।
- * `use cache` রাউট হ্যান্ডলারের ভেতরে সরাসরি বসানো যায় না — তাই আলাদা ফাংশনে রাখা।
- */
+
 async function fetchUpstreamProducts(category, slug) {
     "use cache";
     cacheLife("minutes");
@@ -46,7 +43,6 @@ export async function GET(request) {
 
         return NextResponse.json(data);
     } catch (error) {
-        // Next.js-এর নিজস্ব প্রিরেন্ডার সিগন্যাল ধরে রাখা যাবে না
         unstable_rethrow(error);
 
         console.error("Products API error:", error);

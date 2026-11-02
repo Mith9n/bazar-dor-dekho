@@ -93,7 +93,6 @@ export default function Navbar() {
         };
     }, []);
 
-    // Load linked GitHub profile
     useEffect(() => {
         const userId = session?.user?.id;
 
@@ -137,7 +136,6 @@ export default function Navbar() {
     const currentGitHubProfile =
         githubProfile?.userId === session?.user?.id ? githubProfile : null;
 
-    // Prefer GitHub avatar
     const profileImage =
         currentGitHubProfile?.image || session?.user?.image || null;
     const githubLogin = currentGitHubProfile?.login || "";
@@ -163,7 +161,6 @@ export default function Navbar() {
 
     return (
         <header className="relative z-50 w-full bg-white">
-            {/* LOGO + AUTH */}
             <div className="border-b border-gray-200 bg-white">
                 <div className="page-container mx-auto max-w-7xl">
                     <div className="flex min-h-[82px] items-center justify-between gap-3">
@@ -191,7 +188,6 @@ export default function Navbar() {
                             </div>
                         </Link>
 
-                        {/* AUTH */}
                         {isPending ? (
                             <div className="text-sm text-gray-500">
                                 লোড হচ্ছে...
@@ -258,7 +254,6 @@ export default function Navbar() {
                                     </svg>
                                 </button>
 
-                                {/* DROPDOWN */}
                                 {isDropdownOpen && (
                                     <div className="absolute right-0 top-full z-50 mt-2 w-56 overflow-hidden rounded-xl border border-gray-200 bg-white py-2 shadow-lg">
                                         <div className="border-b border-gray-100 px-4 py-3">
@@ -347,7 +342,6 @@ export default function Navbar() {
                 </div>
             </div>
 
-            {/* CATEGORY NAVIGATION */}
             <div className="border-b border-gray-200 bg-white">
                 <div className="page-container mx-auto max-w-7xl">
                     <nav className="overflow-x-auto" aria-label="পণ্যের ক্যাটাগরি">

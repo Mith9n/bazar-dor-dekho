@@ -36,9 +36,7 @@ body {
   }
 }
 
-/* =========================
-   PRICE TICKER
-========================= */
+
 
 .price-ticker-wrapper {
   width: 100%;
@@ -101,7 +99,7 @@ body {
   color: #16a34a;
 }
 
-/* দাম আসার আগের স্কেলেটন — টিকারের উচ্চতা ঠিক রাখে */
+
 .price-skeleton {
   display: inline-block;
   min-width: 5rem;

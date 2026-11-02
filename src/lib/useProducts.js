@@ -4,13 +4,11 @@ import { useCallback, useEffect, useState } from "react";
 
 const PRODUCTS_URL = "/api/products";
 
-// একটাই fetch — হোমপেজের তিনটি সেকশন ও টিকার একসাথে একটা রিকোয়েস্ট ব্যবহার করবে
 const CACHE_TTL = 60 * 1000;
 
 let cache = { data: null, at: 0 };
 let inflight = null;
 
-// API যেকোনো আকারে ফিরিয়ে দিতে পারে — সবগুলো থেকে লিস্ট বের করে আনো
 export function extractProductList(payload) {
     if (Array.isArray(payload)) return payload;
     if (Array.isArray(payload?.products)) return payload.products;
@@ -24,7 +22,6 @@ async function loadProducts() {
         return cache.data;
     }
 
-    // একই সময়ে অনেক কম্পোনেন্ট ডাকলে একটাই নেটওয়ার্ক কল যাবে
     if (inflight) return inflight;
 
     inflight = (async () => {
@@ -81,7 +78,6 @@ export function useProducts() {
         };
     }, [version]);
 
-    // "আবার চেষ্টা করুন" বাটনের জন্য — পুরোনো ক্যাশ কাটে দিয়ে নতুন করে আনে
     const reload = useCallback(() => {
         cache = { data: null, at: 0 };
         setError("");
@@ -92,7 +88,6 @@ export function useProducts() {
     return { products, loading, error, reload };
 }
 
-// একটি নির্দিষ্ট পণ্য — পুরো তালিকা না এনে শুধু ওটিই আনে
 export async function fetchProductBySlug(slug, signal) {
     const response = await fetch(
         `${PRODUCTS_URL}?slug=${encodeURIComponent(slug)}`,
@@ -114,7 +109,6 @@ export async function fetchProductBySlug(slug, signal) {
 }
 
 export function useProduct(slug) {
-    // slug না থাকলেই ত্রুটি — effect-এ setState না ডেকে এখানেই শেষ করো
     const [state, setState] = useState(() => ({
         slug,
         product: null,
@@ -169,7 +163,6 @@ export function useProduct(slug) {
         };
     }, [slug]);
 
-    // slug বদলালে পুরনো ফলাফল এড়িয়ে যাও — ডারিভড ভ্যালু দিয়ে লোডিং দেখাও
     const isStale = state.slug !== slug;
 
     return {
